@@ -49,15 +49,29 @@ class IssueAdd extends React.Component {
   <div>This is a placeholder for an Issue Add entry form.</div>   
   )  } }
 class IssueList extends React.Component {
+ constructor() {
+ super(); 
+ this.state = { issues: issues };
+    setTimeout(this.createTestIssue.bind(this), 2000); }
+	 createIssue(newIssue) {
+	 const newIssues = this.state.issues.slice(); 
+	 newIssue.id = this.state.issues.length + 1;   
+	 newIssues.push(newIssue); 
+	 this.setState({ issues: newIssues });
+	 }
+  createTestIssue() { 
+  this.createIssue({  
+  status: 'New', owner: 'Pieta', created: new Date(),
+  title: 'Completion date should be optional',    
+  });  }
   render() { 
-  return ( 
-  <div> 
-  <h1>Issue Tracker</h1>        
-  <IssueFilter />  
-  <hr />        
-  <IssueTable issues={issues} />
-  <hr />   
-  <IssueAdd />
-  </div>    ); 
-  } }
+  return (  
+  <div>     
+  <h1>Issue Tracker</h1> 
+  <IssueFilter />   
+  <hr />       
+  <IssueTable issues={this.state.issues} />  
+  <hr />      
+  <IssueAdd />    
+  </div>    );  } }
 ReactDOM.render(<IssueList />, contentNode);  //  Render the component inside  the content Node
