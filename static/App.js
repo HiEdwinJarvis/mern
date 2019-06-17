@@ -1,7 +1,9 @@
-var contentNode = document.getElementById('contents');
-var component = React.createElement(
-  'h1',
+const contentNode = document.getElementById('contents');
+const continents = ['Africa', 'America', 'Asia', 'Australia', 'Europe'];
+const message = continents.map(c => `Hello ${c}!`).join(' ');
+const component = React.createElement(
+  'p',
   null,
-  'Hello World!\u6492\u5927\u58F0\u5730\u7B97\u6CD5'
+  message
 ); // A simple JSX component 
-ReactDOM.render(component, contentNode); //  Render the component inside  the content Node
+ReactDOM.render(component, contentNode); //  Render the component inside the  content Node
