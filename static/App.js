@@ -15,110 +15,110 @@ const issues = [{ id: 1, status: 'Open', owner: 'Ravan',
   created: new Date('2016-08-16'), effort: 14,
   completionDate: new Date('2016-08-30'),
   title: 'Missing bottom border on panel' }];
-class IssueRow extends React.Component {
-  render() {
-    const issue = this.props.issue;
-    return React.createElement(
-      'tr',
+
+const IssueRow = props => React.createElement(
+  'tr',
+  null,
+  '    ',
+  React.createElement(
+    'td',
+    null,
+    props.issue.id
+  ),
+  React.createElement(
+    'td',
+    null,
+    props.issue.status
+  ),
+  React.createElement(
+    'td',
+    null,
+    props.issue.owner
+  ),
+  React.createElement(
+    'td',
+    null,
+    props.issue.created.toDateString()
+  ),
+  React.createElement(
+    'td',
+    null,
+    props.issue.effort
+  ),
+  React.createElement(
+    'td',
+    null,
+    props.issue.completionDate ? props.issue.completionDate.toDateString() : ''
+  ),
+  React.createElement(
+    'td',
+    null,
+    props.issue.title
+  ),
+  '  '
+);
+function IssueTable(props) {
+  const issueRows = props.issues.map(issue => React.createElement(IssueRow, { key: issue.id, issue: issue }));
+  return React.createElement(
+    'table',
+    { className: 'bordered-table' },
+    React.createElement(
+      'thead',
       null,
       React.createElement(
-        'td',
-        null,
-        issue.id
-      ),
-      React.createElement(
-        'td',
-        null,
-        issue.status
-      ),
-      React.createElement(
-        'td',
-        null,
-        issue.owner
-      ),
-      React.createElement(
-        'td',
-        null,
-        issue.created.toDateString()
-      ),
-      React.createElement(
-        'td',
-        null,
-        issue.effort
-      ),
-      React.createElement(
-        'td',
-        null,
-        issue.completionDate ? issue.completionDate.toDateString() : ''
-      ),
-      React.createElement(
-        'td',
-        null,
-        issue.title
-      )
-    );
-  }
-}
-
-class IssueTable extends React.Component {
-  render() {
-    const issueRows = this.props.issues.map(issue => React.createElement(IssueRow, { key: issue.id, issue: issue }));
-    return React.createElement(
-      'table',
-      { className: 'bordered-table' },
-      React.createElement(
-        'thead',
+        'tr',
         null,
         React.createElement(
-          'tr',
+          'th',
           null,
-          React.createElement(
-            'th',
-            null,
-            'Id'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Status'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Owner'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Created'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Effort'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Completion Date'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Title'
-          )
+          'Id'
         ),
-        '        '
+        '          ',
+        React.createElement(
+          'th',
+          null,
+          'Status'
+        ),
+        '          ',
+        React.createElement(
+          'th',
+          null,
+          'Owner'
+        ),
+        React.createElement(
+          'th',
+          null,
+          'Created'
+        ),
+        '          ',
+        React.createElement(
+          'th',
+          null,
+          'Effort'
+        ),
+        '          ',
+        React.createElement(
+          'th',
+          null,
+          'Completion Date'
+        ),
+        '          ',
+        React.createElement(
+          'th',
+          null,
+          'Title'
+        )
       ),
-      React.createElement(
-        'tbody',
-        null,
-        issueRows
-      ),
-      '     '
-    );
-  }
+      '      '
+    ),
+    React.createElement(
+      'tbody',
+      null,
+      issueRows
+    )
+  );
 }
+
 class IssueAdd extends React.Component {
   constructor() {
     super();
