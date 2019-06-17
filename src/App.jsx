@@ -50,9 +50,15 @@ class IssueAdd extends React.Component {
   )  } }
 class IssueList extends React.Component {
  constructor() {
- super(); 
- this.state = { issues: issues };
-    setTimeout(this.createTestIssue.bind(this), 2000); }
+ super();
+ this.state = { issues: [] };
+    setTimeout(this.createTestIssue.bind(this), 2000);  }
+  componentDidMount() { 
+  this.loadData(); 
+  }
+  loadData() { 
+  setTimeout(() => {  
+  this.setState({ issues: issues });    }, 500);  } 
 	 createIssue(newIssue) {
 	 const newIssues = this.state.issues.slice(); 
 	 newIssue.id = this.state.issues.length + 1;   
