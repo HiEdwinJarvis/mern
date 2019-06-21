@@ -4,7 +4,7 @@
   "description": "mern作业",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon -w server.js server.js",
+    "start": "nodemon -w server server/server.js",
     "compile": "babel src --presets react --out-dir static",
     "watch": "babel src --presets react --out-dir static --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -30,6 +30,7 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.18.10",
+    "webpack": "^4.29.6"
   }
 }
